@@ -14,7 +14,7 @@
 # [2 Gaussian Jordan 消元法](#2-Gaussian-Jordan-消元法)  
 # [3  线性回归](#3-线性回归)  
 
-# In[2]:
+# In[127]:
 
 
 # 任意选一个你喜欢的整数，这能帮你得到稳定的结果
@@ -25,7 +25,7 @@ seed = 8 # TODO
 # 
 # ## 1.1 创建一个 4*4 的单位矩阵
 
-# In[3]:
+# In[128]:
 
 
 # 这个项目设计来帮你熟悉 python list 和线性代数
@@ -55,7 +55,7 @@ I = [[2,3,4,5],
 
 # ## 1.2 返回矩阵的行数和列数
 
-# In[8]:
+# In[129]:
 
 
 # TODO 返回矩阵的行数和列数
@@ -67,7 +67,7 @@ def shape(M):
     return (rows,columns)
 
 
-# In[9]:
+# In[130]:
 
 
 # 运行以下代码测试你的 shape 函数
@@ -76,7 +76,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 1.3 每个元素四舍五入到特定小数数位
 
-# In[19]:
+# In[131]:
 
 
 # TODO 每个元素四舍五入到特定小数数位
@@ -87,7 +87,7 @@ def matxRound(M, decPts=4):
             M[i][j]  = round(M[i][j],decPts)
 
 
-# In[31]:
+# In[132]:
 
 
 # 运行以下代码测试你的 matxRound 函数
@@ -96,7 +96,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 1.4 计算矩阵的转置
 
-# In[47]:
+# In[133]:
 
 
 # TODO 计算矩阵的转置
@@ -104,7 +104,7 @@ def transpose(M):
     return [list(row) for row in zip(*M)]
 
 
-# In[48]:
+# In[134]:
 
 
 # 运行以下代码测试你的 transpose 函数
@@ -113,18 +113,31 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 1.5 计算矩阵乘法 AB
 
-# In[77]:
+# In[188]:
 
 
 # TODO 计算矩阵乘法 AB，如果无法相乘则raise ValueError
 def matxMultiply(A, B):
-    if (len(B) == len(A[0])):
-        return [[sum(a * b for a, b in zip(a, b)) for b in zip(*B)] for a in A]
+    row_a, clo_a = shape(A)
+    row_b, clo_b = shape(B)
+    if clo_a == row_b:
+        res = []
+        for i in range(row_a):
+            res.append([])
+            for j in range(clo_b):
+                ele_sum = 0
+                for s in range(clo_a):
+                    matx_ele = A[i][s] * B[s][j]
+                    if matx_ele is list:
+                        print(matx_ele)
+                    ele_sum += matx_ele
+                res[i].append(ele_sum)
+        return res
     else:
         raise ValueError
 
 
-# In[78]:
+# In[189]:
 
 
 # 运行以下代码测试你的 matxMultiply 函数
@@ -158,7 +171,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 #     ...    & ... & ... & ...& ...\\
 #     a_{n1}    & a_{n2} & ... & a_{nn} & b_{n} \end{bmatrix}$
 
-# In[79]:
+# In[190]:
 
 
 # TODO 构造增广矩阵，假设A，b行数相同
@@ -166,7 +179,7 @@ def augmentMatrix(A, b):
     return [A + b for A, b in zip(A,b)]
 
 
-# In[80]:
+# In[191]:
 
 
 # 运行以下代码测试你的 augmentMatrix 函数
@@ -178,7 +191,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 # - 把某行乘以一个非零常数
 # - 把某行加上另一行的若干倍：
 
-# In[81]:
+# In[192]:
 
 
 # TODO r1 <---> r2
@@ -188,14 +201,14 @@ def swapRows(M, r1, r2):
     pass
 
 
-# In[83]:
+# In[193]:
 
 
 # 运行以下代码测试你的 swapRows 函数
 get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test_swapRows')
 
 
-# In[113]:
+# In[194]:
 
 
 # TODO r1 <--- r1 * scale
@@ -210,14 +223,14 @@ def scaleRow(M, r, scale):
     pass
 
 
-# In[114]:
+# In[195]:
 
 
 # 运行以下代码测试你的 scaleRow 函数
 get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test_scaleRow')
 
 
-# In[139]:
+# In[196]:
 
 
 # TODO r1 <--- r1 + r2*scale
@@ -230,7 +243,7 @@ def addScaledRow(M, r1, r2, scale):
     pass
 
 
-# In[140]:
+# In[197]:
 
 
 # 运行以下代码测试你的 addScaledRow 函数
@@ -310,7 +323,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # #### 以下开始你的尝试吧!
 
-# In[141]:
+# In[198]:
 
 
 # 不要修改这里！
@@ -342,7 +355,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 #     
 # $...$
 
-# In[142]:
+# In[199]:
 
 
 # 不要修改这里！
@@ -375,7 +388,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 
 # ### 2.3.3 实现 Gaussian Jordan 消元法
 
-# In[145]:
+# In[200]:
 
 
 # TODO 实现 Gaussain Jordan 方法求解 Ax = b
@@ -391,44 +404,53 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
     返回None，如果 A，b 高度不同
     返回None，如果 A 为奇异矩阵
 """
-from fractions import Fraction  
 
 def gj_Solve(A, b, decPts=4, epsilon=1.0e-16):
-    if len(A)!= len(b) :  
-        return None  
-#     构造扩增矩阵  
-    result = augmentMatrix(A, b)  
-#     转换为阶梯型矩阵  
-    for j in range(len(result[0])-1):  
-        row,maxNum = 0,0    
-        for i in range(len(result)):  
-            if i >= j:  
-                if abs(result[i][j]) > maxNum:  
-                    maxNum = abs(result[i][j])  
-                    row = i  
-#         返回奇异矩阵  
-        if(abs(maxNum) < epsilon):  
-            return None  
-        else:  
-#         找出最大放到最上面  
-            if(row != j):  
-               swapRows(result,j,row)  
-               row,maxNum = 0,0   
-        scaleRow(result,j,Fraction(1,result[j][j]))  
-#         消除下面    
-        for dis in range(len(result)):                
-            if dis != j:  
-                if abs(-result[dis][j]) > epsilon:  
-                    addScaledRow(result,dis,j,-result[dis][j])  
-        newResult =[]  
-        for i in range(len(result)):  
-            row =[]  
-            row.append(result[i][len(result)])  
-            newResult.append(row)         
-    return newResult      
+    if(len(A) != len(b)):
+        return None
+
+    Ab = augmentMatrix(A, b)
+
+    row, column = shape(Ab)
+
+    for index in range(column - 1):
+        r = index
+        max_list = []
+        r_max_index = []
+        
+        while(r < row):
+            max_list.append(abs(Ab[r][index]))
+            r_max_index.append(r)
+            r = r + 1
+            
+        x_max = max(max_list)
+        m_index = max_list.index(x_max)
+        max_row = r_max_index[m_index]
+        
+        if x_max < epsilon:
+            return None
+        elif max_row != index:
+            swapRows(Ab, index, max_row)
+
+        scale = 1.0 / Ab[index][index]
+        scaleRow(Ab, index, scale)
+
+        j = 0
+        while(j < row):
+            if j == index:
+                j = j + 1
+                continue
+            num = - Ab[j][index]
+            addScaledRow(Ab, j, index, num)
+            j = j + 1
+    #printInMatrixFormat(Ab)
+    result_list = []
+    for n in range(row):
+        result_list.append([round(Ab[n][-1],decPts)])
+    return result_list    
 
 
-# In[146]:
+# In[201]:
 
 
 # 运行以下代码测试你的 gj_Solve 函数
@@ -463,7 +485,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 3.1 随机生成样本点
 
-# In[149]:
+# In[202]:
 
 
 # 不要修改这里！
@@ -478,7 +500,7 @@ vs_scatter_2d(X, Y)
 # 
 # ### 3.2.1 猜测一条直线
 
-# In[167]:
+# In[203]:
 
 
 #TODO 请选择最适合的直线 y = mx + b
@@ -496,7 +518,7 @@ vs_scatter_2d(X, Y, m1, b1)
 # MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 # $$
 
-# In[169]:
+# In[204]:
 
 
 # TODO 实现以下函数并输出所选直线的MSE
@@ -622,7 +644,7 @@ print(calculateMSE2D(X,Y,m1,b1))
 # 
 # 在3.3 中，我们知道线性回归问题等价于求解 $X^TXh = X^TY$ (如果你选择不做3.3，就勇敢的相信吧，哈哈)
 
-# In[181]:
+# In[205]:
 
 
 # TODO 实现线性回归
@@ -630,16 +652,18 @@ print(calculateMSE2D(X,Y,m1,b1))
 参数：X, Y 存储着一一对应的横坐标与纵坐标的两个一维数组
 返回：线性回归的系数(如上面所说的 m, b)
 '''
-from numpy import *    
 
 def linearRegression2D(X,Y):
-    xMat = mat(X); yMat = mat(Y).T    
-    xTx = xMat.T*xMat    
-    ws = xTx.I * (xMat.T*yMat) 
-    return ws[0],ws[1]
+    X = [[x, 1] for x in X]
+    Y = [[y] for y in Y]
+    XT = transpose(X)
+    A = matxMultiply(XT, X)
+    b = matxMultiply(XT, Y)
+    result_list = gj_Solve(A, b)
+    return result_list[0][0], result_list[1][0]
 
 
-# In[182]:
+# In[206]:
 
 
 # 请不要修改下面的代码
@@ -652,7 +676,7 @@ print(m2,b2)
 # 你求得的回归结果是什么？
 # 请使用运行以下代码将它画出来。
 
-# In[180]:
+# In[207]:
 
 
 ## 请不要修改下面的代码
@@ -664,7 +688,7 @@ print(calculateMSE2D(X,Y,m2,b2))
 # 如果你的高斯约当消元法通过了单元测试, 那么它将能够解决多维的回归问题  
 # 你将会在更高维度考验你的线性回归实现
 
-# In[ ]:
+# In[208]:
 
 
 # 生成三维的数据点
@@ -672,16 +696,38 @@ X_3d, Y_3d = generatePoints3D(seed)
 vs_scatter_3d(X_3d, Y_3d)
 
 
+# In[209]:
+
+
+def preprocess(X,Y):
+    result_X =[[] for _ in range(len(X))]
+    for i in range(len(X)):
+        result_X[i].append(X[i])
+        result_X[i].append(1)
+        
+    result_Y=[[]for _ in range(len(Y))]
+    for i in range(len(Y)):
+        y=[]
+        y.append(Y[i])
+        result_Y[i].append(y)
+    
+    return result_X,result_Y
+
+
 # 你的线性回归是否能够对付三维的情况?
 
-# In[ ]:
+# In[210]:
 
 
-def linearRegression(X,Y):
-    return None
+def linearRegression(X_3d,Y_3d):
+    X_3d,Y_3d = preprocess(X_3d,Y_3d)
+    A=matxMultiply(transpose(X_3d),X_3d)
+    b=matxMultiply(transpose(X_3d),Y_3d)
+    result=gj_Solve(A,b,decPts=4,epsilon=l.Oe-16)
+    return result 
 
 
-# In[ ]:
+# In[211]:
 
 
 coeff = linearRegression(X_3d, Y_3d)
