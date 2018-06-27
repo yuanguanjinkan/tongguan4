@@ -47,10 +47,10 @@ C = [[1],
      [3]]
 
 #TODO 创建一个 4*4 单位矩阵
-I = [[1,3,4,5],
-    [1,1,5,6],
-    [3,42,1,2],
-    [5,6,8,1]]
+I = [[1,0,0,0],
+    [0,1,0,0],
+    [0,0,1,0],
+    [0,0,0,1]]
 
 
 # ## 1.2 返回矩阵的行数和列数
@@ -353,7 +353,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 #     
 # $...$
 
-# In[53]:
+# In[20]:
 
 
 # 不要修改这里！
@@ -386,7 +386,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 
 # ### 2.3.3 实现 Gaussian Jordan 消元法
 
-# In[54]:
+# In[21]:
 
 
 # TODO 实现 Gaussain Jordan 方法求解 Ax = b
@@ -448,7 +448,7 @@ def gj_Solve(A, b, decPts=4, epsilon=1.0e-16):
     return result_list    
 
 
-# In[55]:
+# In[22]:
 
 
 # 运行以下代码测试你的 gj_Solve 函数
@@ -483,7 +483,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 3.1 随机生成样本点
 
-# In[56]:
+# In[23]:
 
 
 # 不要修改这里！
@@ -498,7 +498,7 @@ vs_scatter_2d(X, Y)
 # 
 # ### 3.2.1 猜测一条直线
 
-# In[57]:
+# In[24]:
 
 
 #TODO 请选择最适合的直线 y = mx + b
@@ -516,7 +516,7 @@ vs_scatter_2d(X, Y, m1, b1)
 # MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 # $$
 
-# In[58]:
+# In[25]:
 
 
 # TODO 实现以下函数并输出所选直线的MSE
@@ -643,7 +643,7 @@ print(calculateMSE2D(X,Y,m1,b1))
 # 
 # 在3.3 中，我们知道线性回归问题等价于求解 $X^TXh = X^TY$ (如果你选择不做3.3，就勇敢的相信吧，哈哈)
 
-# In[59]:
+# In[26]:
 
 
 # TODO 实现线性回归
@@ -662,7 +662,7 @@ def linearRegression2D(X,Y):
     return result_list[0][0], result_list[1][0]
 
 
-# In[60]:
+# In[27]:
 
 
 # 请不要修改下面的代码
@@ -675,7 +675,7 @@ print(m2,b2)
 # 你求得的回归结果是什么？
 # 请使用运行以下代码将它画出来。
 
-# In[61]:
+# In[28]:
 
 
 ## 请不要修改下面的代码
@@ -687,7 +687,7 @@ print(calculateMSE2D(X,Y,m2,b2))
 # 如果你的高斯约当消元法通过了单元测试, 那么它将能够解决多维的回归问题  
 # 你将会在更高维度考验你的线性回归实现
 
-# In[62]:
+# In[29]:
 
 
 # 生成三维的数据点
@@ -695,7 +695,7 @@ X_3d, Y_3d = generatePoints3D(seed)
 vs_scatter_3d(X_3d, Y_3d)
 
 
-# In[67]:
+# In[30]:
 
 
 def preprocess(X,Y):
@@ -715,7 +715,7 @@ def preprocess(X,Y):
 
 # 你的线性回归是否能够对付三维的情况?
 
-# In[68]:
+# In[31]:
 
 
 def linearRegression(X_3d,Y_3d):
@@ -726,7 +726,7 @@ def linearRegression(X_3d,Y_3d):
     return result 
 
 
-# In[69]:
+# In[32]:
 
 
 coeff = linearRegression(X_3d, Y_3d)
