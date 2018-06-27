@@ -113,7 +113,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 1.5 计算矩阵乘法 AB
 
-# In[37]:
+# In[9]:
 
 
 # TODO 计算矩阵乘法 AB，如果无法相乘则raise ValueError
@@ -135,7 +135,7 @@ def matxMultiply(A, B):
         raise ValueError
 
 
-# In[38]:
+# In[10]:
 
 
 # 运行以下代码测试你的 matxMultiply 函数
@@ -343,17 +343,17 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 # 
 # $ --> \begin{bmatrix}
 #     1 & -1 & \frac{1}{7} & -\frac{1}{7} \\
-#     0 & 1 & -\frac{68}{49} & -\frac{6}{49} \\
+#     0 & 1 & -\frac{68}{49} & -\frac{2}{49} \\
 #     0 & 4 & \frac{23}{7} & \frac{5}{7} \end{bmatrix}$
 #     
 # $ --> \begin{bmatrix}
 #     1 & -1 & \frac{1}{7} & -\frac{1}{7} \\
-#      0 & 1 & -\frac{68}{49} & -\frac{6}{49} \\
-#     0 & 0 & 1 & \frac{433}{59} \end{bmatrix}$
+#      0 & 1 & -\frac{68}{49} & -\frac{2}{49} \\
+#      0 & 0 & 1 & \frac{43}{433} \end{bmatrix}$
 #     
 # $...$
 
-# In[20]:
+# In[53]:
 
 
 # 不要修改这里！
@@ -386,7 +386,7 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 
 # ### 2.3.3 实现 Gaussian Jordan 消元法
 
-# In[21]:
+# In[54]:
 
 
 # TODO 实现 Gaussain Jordan 方法求解 Ax = b
@@ -448,7 +448,7 @@ def gj_Solve(A, b, decPts=4, epsilon=1.0e-16):
     return result_list    
 
 
-# In[22]:
+# In[55]:
 
 
 # 运行以下代码测试你的 gj_Solve 函数
@@ -483,7 +483,7 @@ get_ipython().run_line_magic('run', '-i -e test.py LinearRegressionTestCase.test
 
 # ## 3.1 随机生成样本点
 
-# In[23]:
+# In[56]:
 
 
 # 不要修改这里！
@@ -498,7 +498,7 @@ vs_scatter_2d(X, Y)
 # 
 # ### 3.2.1 猜测一条直线
 
-# In[24]:
+# In[57]:
 
 
 #TODO 请选择最适合的直线 y = mx + b
@@ -516,7 +516,7 @@ vs_scatter_2d(X, Y, m1, b1)
 # MSE = \frac{1}{n}\sum_{i=1}^{n}{(y_i - mx_i - b)^2}
 # $$
 
-# In[25]:
+# In[58]:
 
 
 # TODO 实现以下函数并输出所选直线的MSE
@@ -643,7 +643,7 @@ print(calculateMSE2D(X,Y,m1,b1))
 # 
 # 在3.3 中，我们知道线性回归问题等价于求解 $X^TXh = X^TY$ (如果你选择不做3.3，就勇敢的相信吧，哈哈)
 
-# In[41]:
+# In[59]:
 
 
 # TODO 实现线性回归
@@ -662,7 +662,7 @@ def linearRegression2D(X,Y):
     return result_list[0][0], result_list[1][0]
 
 
-# In[42]:
+# In[60]:
 
 
 # 请不要修改下面的代码
@@ -675,7 +675,7 @@ print(m2,b2)
 # 你求得的回归结果是什么？
 # 请使用运行以下代码将它画出来。
 
-# In[43]:
+# In[61]:
 
 
 ## 请不要修改下面的代码
@@ -687,7 +687,7 @@ print(calculateMSE2D(X,Y,m2,b2))
 # 如果你的高斯约当消元法通过了单元测试, 那么它将能够解决多维的回归问题  
 # 你将会在更高维度考验你的线性回归实现
 
-# In[44]:
+# In[62]:
 
 
 # 生成三维的数据点
@@ -695,7 +695,7 @@ X_3d, Y_3d = generatePoints3D(seed)
 vs_scatter_3d(X_3d, Y_3d)
 
 
-# In[45]:
+# In[67]:
 
 
 def preprocess(X,Y):
@@ -715,7 +715,7 @@ def preprocess(X,Y):
 
 # 你的线性回归是否能够对付三维的情况?
 
-# In[46]:
+# In[68]:
 
 
 def linearRegression(X_3d,Y_3d):
@@ -726,7 +726,7 @@ def linearRegression(X_3d,Y_3d):
     return result 
 
 
-# In[47]:
+# In[69]:
 
 
 coeff = linearRegression(X_3d, Y_3d)
