@@ -350,6 +350,21 @@ printInMatrixFormat(Ab,padding=3,truncating=0)
 #     1 & -1 & \frac{1}{7} & -\frac{1}{7} \\
 #      0 & 1 & -\frac{68}{49} & -\frac{2}{49} \\
 #      0 & 0 & 1 & \frac{43}{433} \end{bmatrix}$
+#      
+# $ --> \begin{bmatrix}
+#     1 & 0 & -\frac{19}{49} & -\frac{51}{49} \\
+#      0 & 1 & -\frac{68}{49} & -\frac{2}{49} \\
+#      0 & 0 & 1 & \frac{43}{433} \end{bmatrix}$
+#      
+#   $ --> \begin{bmatrix}
+#     1 & 0 & 0 & -\frac{24190}{21217} \\
+#      0 & 1 & -\frac{68}{49} & -\frac{2}{49} \\
+#      0 & 0 & 1 & \frac{43}{433} \end{bmatrix}$  
+#      
+# $ --> \begin{bmatrix}
+#     1 & 0 & 0 & -\frac{24190}{21217} \\
+#      0 & 1 & 0 & \frac{42}{433} \\
+#      0 & 0 & 1 & \frac{43}{433} \end{bmatrix}$     
 #     
 # $...$
 
